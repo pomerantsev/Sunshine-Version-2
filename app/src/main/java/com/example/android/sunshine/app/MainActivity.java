@@ -26,9 +26,18 @@ public class MainActivity extends ActionBarActivity
 
         if (findViewById(R.id.weather_detail_container) != null) {
             mTwoPane = true;
+            if (savedInstanceState == null) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.weather_detail_container, new DetailFragment())
+                        .commit();
+            }
         } else {
             mTwoPane = false;
         }
+
+        ForecastFragment forecastFragment = ((ForecastFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fragment_forecast));
+        forecastFragment.setUseTodayLayout(!mTwoPane);
     }
 
     @Override
