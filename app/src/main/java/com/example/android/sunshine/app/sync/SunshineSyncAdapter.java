@@ -296,6 +296,11 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
                 notifyWeather();
             }
 
+            // Delete stale data from the DB
+            getContext().getContentResolver().delete(WeatherContract.WeatherEntry.CONTENT_URI,
+                    WeatherContract.WeatherEntry.COLUMN_DATE + " <= ?",
+                    new String[] {Long.toString(dayTime.setJulianDay(julianStartDay - 1))});
+
             Log.d(LOG_TAG, "Sunshine Service Complete. " + cVVector.size() + " Inserted");
 
         } catch (JSONException e) {
