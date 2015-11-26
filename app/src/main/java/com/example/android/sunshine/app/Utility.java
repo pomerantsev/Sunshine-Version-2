@@ -259,4 +259,12 @@ public class Utility {
                 .getInt(c.getString(R.string.pref_location_status_key),
                         SunshineSyncAdapter.LOCATION_STATUS_UNKNOWN);
     }
+
+    public static void resetLocationStatus(Context c) {
+        PreferenceManager.getDefaultSharedPreferences(c)
+                .edit()
+                .putInt(c.getString(R.string.pref_location_status_key),
+                        SunshineSyncAdapter.LOCATION_STATUS_UNKNOWN)
+                .apply();
+    }
 }

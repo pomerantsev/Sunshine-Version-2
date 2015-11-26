@@ -67,6 +67,9 @@ public class SettingsActivity extends PreferenceActivity
             // For other preferences, set the summary to the value's simple string representation.
             preference.setSummary(stringValue);
         }
+        if (preference.getKey().equals(getString(R.string.pref_location_key))) {
+            Utility.resetLocationStatus(this);
+        }
         SunshineSyncAdapter.syncImmediately(this);
         return true;
     }
