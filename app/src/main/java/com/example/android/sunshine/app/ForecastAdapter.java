@@ -104,13 +104,17 @@ public class ForecastAdapter extends CursorAdapter {
         // Get description from weather condition ID
         String description = Utility.getStringForWeatherCondition(context, weatherId);
         viewHolder.descriptionView.setText(description);
+        viewHolder.descriptionView.setContentDescription(context.getString(R.string.a11y_forecast,
+                description));
 
-        viewHolder.iconView.setContentDescription(description);
+        String high = Utility.formatTemperature(context,
+                cursor.getDouble(ForecastFragment.COL_WEATHER_MAX_TEMP));
+        viewHolder.highView.setText(high);
+        viewHolder.highView.setContentDescription(context.getString(R.string.a11y_high_temp, high));
 
-        double high = cursor.getDouble(ForecastFragment.COL_WEATHER_MAX_TEMP);
-        viewHolder.highView.setText(Utility.formatTemperature(context, high));
-
-        double low = cursor.getDouble(ForecastFragment.COL_WEATHER_MIN_TEMP);
-        viewHolder.lowView.setText(Utility.formatTemperature(context, low));
+        String low = Utility.formatTemperature(context,
+                cursor.getDouble(ForecastFragment.COL_WEATHER_MIN_TEMP));
+        viewHolder.lowView.setText(low);
+        viewHolder.lowView.setContentDescription(context.getString(R.string.a11y_low_temp, low));
     }
 }
