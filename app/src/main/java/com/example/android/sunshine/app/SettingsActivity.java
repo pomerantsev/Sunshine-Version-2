@@ -35,6 +35,7 @@ public class SettingsActivity extends PreferenceActivity
         // updated when the preference changes.
         bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_location_key)));
         bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_units_key)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_icons_key)));
     }
 
     // Registers a shared preference change listener that gets notified when preferences change
@@ -121,7 +122,8 @@ public class SettingsActivity extends PreferenceActivity
             // first clear locationStatus
             Utility.resetLocationStatus(this);
             SunshineSyncAdapter.syncImmediately(this);
-        } else if ( key.equals(getString(R.string.pref_units_key)) ) {
+        } else if (key.equals(getString(R.string.pref_units_key)) ||
+                key.equals(getString(R.string.pref_icons_key))) {
             // units have changed. update lists of weather entries accordingly
             getContentResolver().notifyChange(WeatherContract.WeatherEntry.CONTENT_URI, null);
         } else if ( key.equals(getString(R.string.pref_location_status_key)) ) {
