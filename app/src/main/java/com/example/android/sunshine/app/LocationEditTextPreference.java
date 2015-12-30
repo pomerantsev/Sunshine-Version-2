@@ -9,7 +9,6 @@ import android.preference.EditTextPreference;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -27,7 +26,6 @@ public class LocationEditTextPreference extends EditTextPreference {
         try {
             mMinLength = a.getInteger(R.styleable.LocationEditTextPreference_minLength,
                     DEFAULT_MINIMUM_LOCATION_LENGTH);
-            Log.d("BlahBlah", "Min length: " + mMinLength);
         } finally {
             a.recycle();
         }
