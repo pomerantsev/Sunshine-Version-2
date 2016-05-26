@@ -12,6 +12,9 @@
     <style name="SettingsTheme" parent="AppTheme">
     </style>
 
+    <style name="AppTheme.Main" parent="@style/AppTheme" />
+    <style name="AppTheme.Details" parent="@style/AppTheme" />
+
     <!-- Main activity toolbar styles -->
     <style name="Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:background">?attr/colorPrimary</item>
